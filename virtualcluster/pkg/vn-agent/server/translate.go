@@ -107,6 +107,9 @@ func TranslatePathForSuper(req *restful.Request, tenantName string) error {
 	commonPath := fmt.Sprintf("/api/v1/namespaces/%s-%s/pods/%s", tenantName, podNamespace, podID)
 
 	switch action {
+	case "ephemeralContainers":
+		apiserverPath = path.Join(commonPath, "ephemeralcontainers")
+		translateRawQuery(req, containerName)
 	case "containerLogs":
 		// eg. 	/containerLogs/{podNamespace}/{podID}/{containerName}
 		// to   /api/v1/namespaces/{tenantName}-{podNamespace}/pods/{podID}/log

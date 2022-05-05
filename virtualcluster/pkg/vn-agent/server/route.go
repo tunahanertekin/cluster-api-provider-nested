@@ -112,6 +112,19 @@ func (s *Server) InstallHandlers() {
 		To(s.proxy).
 		Operation("getPortForward"))
 	s.restfulCont.Add(ws)
+
+	ws = new(restful.WebService)
+	ws.Path("/ephemeralContainers")
+	ws.Route(ws.PATCH("/{podNamespace}/{podID}").
+		To(s.proxy).
+		Operation("getEphemeralContainers"))
+	ws.Route(ws.GET("/{podNamespace}/{podID}").
+		To(s.proxy).
+		Operation("getEphemeralContainers"))
+	ws.Route(ws.PUT("/{podNamespace}/{podID}").
+		To(s.proxy).
+		Operation("getEphemeralContainers"))
+	s.restfulCont.Add(ws)
 }
 
 func (s *Server) proxy(req *restful.Request, resp *restful.Response) {

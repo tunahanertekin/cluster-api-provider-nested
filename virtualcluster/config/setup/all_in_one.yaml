@@ -415,6 +415,7 @@ rules:
   - pods/log
   - pods/exec
   - pods/portforward
+  - pods/ephemeralcontainers
   - nodes/proxy
   verbs:
   - get

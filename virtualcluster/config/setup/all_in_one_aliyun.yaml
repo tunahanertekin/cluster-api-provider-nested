@@ -379,6 +379,7 @@ rules:
   - pods/log
   - pods/exec
   - pods/portforward
+  - pods/ephemeralcontainers
   verbs:
   - get
   - list
